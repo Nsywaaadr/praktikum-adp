@@ -14,22 +14,28 @@ def save_data(data):
         json.dump(data, file, indent=4)
 
 def tambah_tugas(data):
-    nama = input("Nama Tugas: ")
+    nama_tugas = input("Nama Tugas: ")
+    mahasiswa = input("Nama Mahasiswa: ")
+    matakuliah = input("Mata Kuliah: ")
+
     tugas = {
-        "nama": nama
+        "nama_tugas": nama_tugas,
+        "mahasiswa": mahasiswa,
+        "matakuliah": matakuliah
     }
+
     data.append(tugas)
     save_data(data)
     print("Tugas berhasil ditambahkan!")
 
 def tampilkan_tugas(data):
     if not data:
-        print("Tidak ada tugas.")
+        print("Tidak ada tugas!")
         return
     
     print("\nDaftar Tugas:")
     for i, t in enumerate(data, 1):
-        print(f"{i}. {t['nama']}")
+        print(f"{i}. {t['nama_tugas']} | {t['mahasiswa']} | {t['matakuliah']}")
 
 def hapus_tugas(data):
     tampilkan_tugas(data)
